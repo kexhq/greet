@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: ["**"]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Tey (bundles the Kex toolchain)
+        run: |
+          brew tap kexhq/tey
+          brew install kexhq/tey/tey
+          tey -V
+
+      - name: Install dependencies
+        run: tey install
+
+      - name: Build
+        run: tey build
+
+      - name: Test
+        run: tey test
