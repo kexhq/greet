@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@1f8e202ffddf94def7f42f6fa3a482e821489f9c # 2026.07.10.1
+
       - name: Install Tey (bundles the Kex toolchain)
         run: |
           brew tap kexhq/tey
@@ -25,8 +28,15 @@ jobs:
       - name: Install dependencies
         run: tey install
 
-      - name: Build
-        run: tey build
+      - name: Compile
+        run: kex --compile -o ebin src/greet.kex
 
+      # Not `tey test`: it puts only dependencies on the module search path,
+      # not the package's own src/, so the spec cannot resolve Greet.
       - name: Test
-        run: tey test
+        run: |
+          failed=0
+          for spec in spec/*.spec.kex; do
+            kex --source-root src "$spec" || failed=1
+          done
+          exit $failed
