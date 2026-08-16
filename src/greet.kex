@@ -1,0 +1,18 @@
+# This is the first Kex package ever.
+# This can be used to test that the whole infrastructure works.
+
+# Greet a user or the whole world!
+# @example
+#   Geet.greet("John")   # => prints: "Hello, John!"
+#   Greet.hello()        # => prints: "Hello, World!"
+module Greet
+
+let greeting(name: String) = "Hello, ${name}!"
+
+foul greet(name: String) do
+  IO.printLine(name.greeting)
+end
+
+foul hello() do
+  IO.printLine(greeting("World"))
+end

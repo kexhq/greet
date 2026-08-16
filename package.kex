@@ -1,0 +1,5 @@
+bundle "greet" do
+  version("0.1.0")
+  kex(">= 0.3.3")
+  license("MIT")
+end

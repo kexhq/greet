@@ -1,0 +1,5 @@
+describe "Greet" do
+  it "can give you the greeting" do
+    Assert.equal(Great.greeting("John"), "Hello, John!")
+  end
+end
