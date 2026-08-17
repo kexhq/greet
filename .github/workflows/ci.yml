@@ -16,11 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Tey (bundles the Kex toolchain)
-        run: |
-          brew tap kexhq/tey
-          brew install kexhq/tey/tey
-          tey -V
+      - name: Check out Kex for the setup-tey action
+        uses: actions/checkout@v4
+        with:
+          repository: kexhq/kex
+          ref: v0.3.4
+          path: kex
+
+      - uses: ./kex/.github/actions/setup-tey
 
       - name: Install dependencies
         run: tey install
