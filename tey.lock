@@ -1,6 +1,7 @@
 {
   "version": 1,
-  "kex": {"requirement": ">= 0.3.3", "version": "0.3.3"},
+  "kex": {"requirement": ">= 0.3.4", "version": "0.3.4"},
+  "otp": {"requirement": "", "release": 29},
   "deps": {
 
   }
