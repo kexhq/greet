@@ -1,5 +1,28 @@
+# `using Greet` is load-bearing: without it the module autoloads once and only
+# the first `it` in the run resolves, so a second example dies with
+# "Undefined function: Greet.greeting".
+using Greet
+
 describe "Greet" do
-  it "can give you the greeting" do
+  before do
+    Mock.IO.start()
+  end
+
+  after do
+    Mock.IO.stop()
+  end
+
+  it "builds a greeting for a name" do
     Assert.equal(Greet.greeting("John"), "Hello, John!")
+  end
+
+  it "greets the world" do
+    Greet.hello
+    Assert.equal(Mock.IO.output(), "Hello, World!\n")
+  end
+
+  it "prints a greeting for a name" do
+    Greet.greet("John")
+    Assert.equal(Mock.IO.output(), "Hello, John!\n")
   end
 end
