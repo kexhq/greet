@@ -1,6 +1,6 @@
 # greet
 
-A Kex package.
+The first ever Kex library package.
 
 ## Develop
 
