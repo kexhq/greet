@@ -1,8 +1,9 @@
 {
   "version": 1,
-  "kex": {"requirement": ">= 0.3.4", "version": "0.3.4"},
-  "otp": {"requirement": "", "release": 29},
-  "deps": {
-
-  }
+  "workspace": {"members": {"greet": "."}, "manifest_fingerprint": "2c1d99110e6962e199e1a82fed93a71e9d5cb0a857095fcced547ae2b8cbbe78"},
+  "toolchain": {"kex": "0.4.0", "kex_requirement": ">= 0.4.0.beta", "otp": 29, "otp_requirement": ""},
+  "packages": {
+    "greet": {"version": "0.1.0", "source": "workspace", "git": "", "resolved": "", "commit": "", "subdir": "", "path": ".", "sha256": "", "groups": [], "dependencies": [], "plugins": {}, "workspace": true}
+  },
+  "plugins": {"approvals": {}}
 }

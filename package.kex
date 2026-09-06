@@ -1,6 +1,6 @@
-bundle "greet" do
+package "greet" do
   version("0.1.0")
   description("Greet anyone")
   license("MIT")
-  kex(">= 0.3.4")
+  kex(">= 0.4.0.beta")
 end
